@@ -85,7 +85,7 @@ public class Deck {
         System.out.println("Quedan " + cards.toArray().length + " cartas.");
     }
 
-    public void hand() {
+    public void  hand() {
         Card[] hand = new Card[5];
         Card randomCard;
         Random random = new Random();
