@@ -4,17 +4,25 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args){
         Deck x = new Deck();
+        boolean unfinished = true;
 
         x.Deck();
         x.createDeck();
 
-        showMenu(x);
+        while(unfinished) {
+            try {
+                showMenu(x);
+                unfinished = false;
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
 
     }
 
-    public static void showMenu(Deck x){
+    public static void showMenu(Deck x) throws Exception{
         int option;
         boolean onLoop = true;
         Scanner write = new Scanner(System.in);
@@ -37,24 +45,42 @@ public class Main {
                     System.out.println();
                     break;
                 case 2:
-                    x.head();
-                    System.out.println();
+                    try {
+                        x.head();
+                        System.out.println();
+                    }catch (Exception e){
+                        System.out.println(e.getMessage());
+                        System.out.println("Finalizando el programa, vuelve pronto!");
+                        onLoop = false;
+                    }
                     break;
                 case 3:
-                    x.pick();
-                    System.out.println();
+                    try {
+                        x.pick();
+                        System.out.println();
+                    }catch (Exception e){
+                        System.out.println(e.getMessage());
+                        System.out.println("Finalizando el programa, vuelve pronto!");
+                        onLoop = false;
+                    }
                     break;
                 case 4:
-                    x.hand();
-                    System.out.println();
+                    try {
+                        x.hand();
+                        System.out.println();
+                    }catch (Exception e){
+                        System.out.println(e.getMessage());
+                        System.out.println("Finalizando el programa, vuelve pronto!");
+                        onLoop = false;
+                    }
                     break;
                 case 0:
                     onLoop = false;
                     break;
                 default:
-                    System.out.println("Opción no válida");
-                    System.out.println();
+                    throw new Exception("Opción no válida\n");
             }
         }
+
     }
 }

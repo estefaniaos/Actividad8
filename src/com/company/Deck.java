@@ -64,7 +64,10 @@ public class Deck {
         System.out.println("Se mezclo el Deck");
     }
 
-    public void head(){
+    public void head() throws Exception{
+        if( cards.toArray().length < 1 ){
+            throw new DeckExceptions().EmptyDeckException(cards.toArray().length);
+        }
         Card firstCard;
         firstCard = cards.get(0);
 
@@ -73,7 +76,11 @@ public class Deck {
         System.out.println("Quedan " + cards.toArray().length + " cartas.");
     }
 
-    public void pick(){
+    public void pick() throws Exception{
+        if( cards.toArray().length < 1 ){
+            throw new DeckExceptions().EmptyDeckException(cards.toArray().length);
+        }
+
         Random random = new Random();
         int pickedNum = random.nextInt(cards.toArray().length);
 
@@ -85,7 +92,11 @@ public class Deck {
         System.out.println("Quedan " + cards.toArray().length + " cartas.");
     }
 
-    public void  hand() {
+    public void  hand() throws Exception{
+        if( cards.toArray().length < 5 ){
+            throw new DeckExceptions().EmptyDeckException(cards.toArray().length);
+        }
+
         Card[] hand = new Card[5];
         Card randomCard;
         Random random = new Random();
@@ -104,4 +115,6 @@ public class Deck {
         System.out.println("Quedan " + cards.toArray().length + " cartas.");
 
     }
+
+
 }
